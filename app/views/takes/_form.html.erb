@@ -1,0 +1,18 @@
+<table>
+
+  <tr>
+    <th><%= form.label :sale_id, "伝票番号" %></th>
+    <td><%= form.collection_select :sale_id,
+            Sale.all, :id, :id %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :menu_id, "メニュー" %></th>
+    <td><%= form.collection_select :menu_id,
+            Menu.order("id"), :id, :name %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :number, "個数" %></th>
+    <td><%= form.number_field :number %></td>
+  </tr>
+
+</table>

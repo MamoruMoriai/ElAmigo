@@ -1,5 +1,6 @@
 class SalesController < ApplicationController
   def index
+    @sales = Sale.order("id")
     
     #伝票別売上
     @sale_price = Sale.sale_price
@@ -40,4 +41,42 @@ class SalesController < ApplicationController
     end
     
   end
+
+  def show
+    @sale = Sale.find(params[:id])
+  end
+
+  def new
+    @sale = Sale.new()
+  end
+
+  def edit
+    @sale = Sale.find(params[:id])
+  end
+
+  def create
+    @sale = Sale.new(params[:sale])
+    if @sale.save
+      redirect_to @sale, notice: "伝票を作成しました。"
+    else
+      render "new"
+    end
+  end
+
+  def update
+    @sale = Sale.find(params[:id])
+    @sale.assign_attributes(params[:sale])
+    if @sale.save
+      redirect_to @sale, notice: "伝票情報を更新しました。"
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @sale = Sale.find(params[:id])
+    @sale.destroy
+    redirect_to :sales, notice: "伝票情報を削除しました。"
+  end
+
 end

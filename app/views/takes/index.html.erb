@@ -1,0 +1,30 @@
+<div align="center">
+  <h1>TAKES</h1>
+  <h3><%= link_to "SALES", :sales %></h3>
+
+<h3>注文データ</h3>
+
+<% if @takes.present? %>
+  <table>
+    <tr>
+      <th width="100px">伝票番号</th>
+      <th width="100px">注文番号</th>
+      <th width="200px">メニュー名</th>
+      <th width="100px">個数</th>
+    </tr>
+    <% @takes.each do |take| %>
+      <tr>
+        <td align="center">No.<%= take.sale_id %></td>
+        <td align="center"No.><%= link_to take.id, take %></td>
+        <td align="center"><%= take.menu.name %></td>
+        <td align="center"><%= take.number %>個</td>
+        <td><%= link_to "編集", [:edit, take] %> | 
+            <%= link_to "削除", take, method: :delete, data: {confirm:"本当に削除しますか?"} %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h5>注文情報がありません。</h5>
+<% end %>
+
+</div>

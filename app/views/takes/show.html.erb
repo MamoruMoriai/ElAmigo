@@ -1,0 +1,30 @@
+<div align="center">
+
+<h1>注文情報の詳細</h1>
+
+<p><%= link_to "TAKES", :takes %></p>
+
+<table>
+  <tr>
+    <th>伝票番号：</th>
+    <td align="center">No.<%= @take.sale_id %></td>
+  </tr>
+  <tr>
+    <th>注文番号：</th>
+    <td align="center">No.<%= @take.id %></td>
+  </tr>
+  <tr>
+    <th width="100px">メニュー名：</th>
+    <td align="center"><%= @take.menu.name %></td>
+  </tr>
+  <tr>
+    <th>金額：</th>
+    <td align="center">¥<%= @take.menu.price %></td>
+  </tr>
+  <tr>
+    <th>個数：</th>
+    <td align="center"><%= @take.number %>個</td>
+  </tr>
+</table>
+
+</div>

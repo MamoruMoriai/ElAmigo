@@ -1,6 +1,36 @@
+<div align="center">
+
 <h1>SALES</h1>
+<h3><%= link_to "TAKES", :takes %></h3>
+
+<h3>伝票データ</h3>
+<% if @sales.present? %>
+  <table>
+    <tr>
+      <th width="100px">伝票番号</th>
+      <th width="100px">座席番号</th>
+      <th width="200px">日時</th>
+      <th width="100px">人数</th>
+    </tr>
+    <% @sales.each do |sale| %>
+      <tr>
+        <td align="center">No.<%= link_to sale.id, sale %></td>
+        <td align="center"><%= sale.seat.name %>卓</td>
+        <td align="center"><%= sale.date.strftime("%Y年%m月%d日 %H時台") %></td>
+        <td align="center"><%= sale.visitor %>名</td>
+        <td><%= link_to "編集", [:edit, sale] %> | 
+            <%= link_to "削除", sale, method: :delete, data: { confirm: "本当に削除しますか？" } %> | 
+            <%= link_to "注文追加", :new_take %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h5>伝票情報はありません。</h5>
+<% end %>
 
 <canvas id="sale_price" width="150" height="60"></canvas>
 <canvas id="date_price" width="150" height="60"></canvas>
 <canvas id="time_price" width="150" height="60"></canvas>
 <canvas id="table_price" width="150" height="60"></canvas>
+
+</div>

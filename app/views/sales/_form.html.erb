@@ -1,0 +1,17 @@
+<table>
+  
+  <tr>
+    <th><%= form.label :seat_id, "座席番号" %></th>
+    <td><%= form.collection_select :seat_id,
+            Seat.all, :id, :name %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :date, "日時" %></th>
+    <td><%= form.datetime_select :date, value: Time.now %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :visitor, "人数" %></th>
+    <td><%= form.number_field :visitor %></td>
+  </tr>
+
+</table>

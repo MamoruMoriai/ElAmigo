@@ -1,0 +1,26 @@
+<div align="center">
+
+<h1>伝票情報の詳細</h1>
+  
+<p><%= link_to "SALES", :sales %></p>
+
+<table>
+  <tr>
+    <th>伝票番号：</th>
+    <td align="center">No.<%= @sale.id %></td>
+  </tr>
+  <tr>
+    <th>座席：</th>
+    <td align="center"><%= @sale.seat.name %>卓</td>
+  </tr>
+  <tr>
+    <th>日付：</th>
+    <td align="center"><%= @sale.date.strftime("%Y年%m月%d日 %H時台") %></td>
+  </tr>
+  <tr>
+    <th>人数：</th>
+    <td align="center"><%= @sale.visitor %>名</td>
+  </tr>
+</table>
+
+</div>
