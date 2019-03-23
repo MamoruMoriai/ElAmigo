@@ -3,7 +3,9 @@
 <h1>SALES</h1>
 <h3><%= link_to "TAKES", :takes %></h3>
 
+<div style="margin:100px;">
 <h3>伝票データ</h3>
+<h5><%= link_to "伝票作成", :new_sale %></h5>
 <% if @sales.present? %>
   <table>
     <tr>
@@ -20,17 +22,25 @@
         <td align="center"><%= sale.visitor %>名</td>
         <td><%= link_to "編集", [:edit, sale] %> | 
             <%= link_to "削除", sale, method: :delete, data: { confirm: "本当に削除しますか？" } %> | 
-            <%= link_to "注文追加", :new_take %></td>
+            <%= link_to "詳細", sale %></td>
       </tr>
     <% end %>
   </table>
 <% else %>
   <h5>伝票情報はありません。</h5>
 <% end %>
+</div>
 
-<canvas id="sale_price" width="150" height="60"></canvas>
-<canvas id="date_price" width="150" height="60"></canvas>
-<canvas id="time_price" width="150" height="60"></canvas>
-<canvas id="table_price" width="150" height="60"></canvas>
-
+<div id="sale_price_chart" style="margin:100px;">
+  <canvas id="sale_price" width="150" height="60"></canvas>
+</div>
+<div id="date_price_chart" style="margin:100px;">
+  <canvas id="date_price" width="150" height="60"></canvas>
+</div>
+<div id="time_price_chart" style="margin:100px;">
+  <canvas id="time_price" width="150" height="60"></canvas>
+</div>
+<div id="table_price_chart" style="margin:100px;">
+  <canvas id="table_price" width="150" height="60"></canvas>
+</div>
 </div>

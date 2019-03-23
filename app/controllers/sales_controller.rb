@@ -44,6 +44,7 @@ class SalesController < ApplicationController
 
   def show
     @sale = Sale.find(params[:id])
+    @takes = Take.where(sale_id: params[:id])
   end
 
   def new
