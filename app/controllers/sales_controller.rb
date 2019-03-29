@@ -56,7 +56,7 @@ class SalesController < ApplicationController
   end
 
   def create
-    @sale = Sale.new(params[:sale])
+    @sale = Sale.new(sale_params)
     if @sale.save
       redirect_to @sale, notice: "伝票を作成しました。"
     else
@@ -66,7 +66,7 @@ class SalesController < ApplicationController
 
   def update
     @sale = Sale.find(params[:id])
-    @sale.assign_attributes(params[:sale])
+    @sale.assign_attributes(sale_params)
     if @sale.save
       redirect_to @sale, notice: "伝票情報を更新しました。"
     else
@@ -78,6 +78,11 @@ class SalesController < ApplicationController
     @sale = Sale.find(params[:id])
     @sale.destroy
     redirect_to :sales, notice: "伝票情報を削除しました。"
+  end
+
+  private
+  def sale_params
+    params.require(:sale).permit(:seat_id, :date, :visitor)
   end
 
 end

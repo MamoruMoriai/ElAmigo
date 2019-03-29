@@ -16,7 +16,7 @@ class TakesController < ApplicationController
   end
 
   def create
-    @take = Take.new(params[:take])
+    @take = Take.new(take_params)
     if @take.save
       redirect_to @take, notice: "注文を追加しました。"
     else
@@ -26,7 +26,7 @@ class TakesController < ApplicationController
 
   def update
     @take = Take.find(params[:id])
-    @take.assign_attributes(params[:take])
+    @take.assign_attributes(take_params)
     if @take.save
       redirect_to @take, notice: "注文情報を更新しました。"
     else
@@ -38,5 +38,10 @@ class TakesController < ApplicationController
     @take = Take.find(params[:id])
     @take.destroy
     redirect_to :takes, notice: "注文情報を削除しました。"
+  end
+
+  private
+  def take_params
+    params.require(:take).permit(:sale_id, :menu_id, :number)
   end
 end
